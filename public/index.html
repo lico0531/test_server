@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LED Control</title>
+    <script>
+        function controlLED(state) {
+            fetch(`/led/${state}`)
+                .then(response => response.text())
+                .then(data => alert(data))
+                .catch(error => alert("Error: " + error));
+        }
+    </script>
+</head>
+<body>
+    <h1>LED 제어</h1>
+    <button onclick="controlLED('on')">LED ON</button>
+    <button onclick="controlLED('off')">LED OFF</button>
+    <button onclick="controlLED('run')">SERVO</button>
+</body>
+</html>
