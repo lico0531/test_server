@@ -52,6 +52,7 @@ app.get("/led/:state", (req, res) => {
   const state = req.params.state; // 'on' or 'off'
   if (state === 'on' || state === 'off') {
     client.publish('umbrella/led', state);
+    console.log('led 버튼 동작함함');
     res.send(`MQTT LED command sent: ${state}`);
   } else {
     res.status(400).send("Invalid command");
@@ -61,6 +62,7 @@ app.get("/led/:state", (req, res) => {
 // 라우터 - 서보 동작 명령 전송
 app.get("/servo/run", (req, res) => {
   client.publish('umbrella/servo', 'run');
+  console.log('모터 버튼 동작함함');
   res.send("MQTT Servo run command sent");
 });
 
